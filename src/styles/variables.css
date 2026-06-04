@@ -1,0 +1,30 @@
+:root {
+    /* Tonos de radiación y fósforo crudo */
+    --color-fondo-gaia: #020502;
+    --color-fosforo-vivo: #22ff55;
+    --color-fosforo-quemado: #0b5018;
+    --color-alerta-sangre: #ff2222;
+    
+    /* Forzamos que el color claro sea blanco puro para tu lienzo */
+    --color-fondo-claro: #ffffff;
+    
+    /* Tipografía utilitaria de máquina de terminal */
+    --fuente-monospaced: 'Courier New', Courier, monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente-monospaced);
+    user-select: none; 
+}
+
+body {
+    /* Cambiamos esta línea para que use el blanco del lienzo de calibración */
+    background-color: var(--color-fondo-claro);
+    color: #000000;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}

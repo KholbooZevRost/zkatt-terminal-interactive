@@ -1,0 +1,477 @@
+/* ==========================================================================
+   ÍNDICE GENERAL DEL SISTEMA ESTILOS Z.KATT
+   ==========================================================================
+   [Parte 1] El Escenario General
+     - Regla 01: #pantalla-blanca (Lienzo Splash base)
+     - Regla 02: #pantalla-blanca.modo-terminal (Transición modo hacker)
+     - Regla 03: .contenedor-katt (Ancla posicional del isotipo)
+     - Regla 04: .gato-svg (Lienzo geométrico del gato interactivo)
+     - Regla 05: .titulo-sistema (Estilo del branding Z_KATT // KOBLET)
+     - Regla 06: .titulo-sistema.modo-terminal (Alerta visual roja)
+
+   [Parte 2] Dinámicas Cromáticas y Animaciones Oculares
+     - Regla 07: .ojo-base (Visores verdes + drop-shadow con parpadeo)
+     - Regla 08: .ojo-base.furia-roja (Castigo visual rojo fósforo estático)
+     - Regla 09: .iris (Pupila negra reactiva con parpadeo sincronizado)
+     - Regla 10: .iris.furia-roja (Bloqueo de opacidad en modo hostil)
+
+   [Parte 3] Interfaces del Cuadro de Diálogo y Menús de Respuesta
+     - Regla 11: .dialogo-terminal (Caja de texto clásica estilo terminal)
+     - Regla 12: .dialogo-terminal p (Formato tipográfico y estado hostil)
+     - Regla 13: .bloque-opciones (Alineación vertical de botones)
+     - Regla 14: .btn-nodo (Botones interactivos de inyección/cierre)
+
+   [Parte 4] El Núcleo de la Terminal Matrix Operativa
+     - Regla 15: .consola-terminal (Lienzo del monitor del servidor)
+     - Regla 16: .linea-comando (Control de saltos de línea de datos)
+     - Regla 17: .linea-exito / .linea-alerta / .linea-critica (Alertas)
+   ========================================================================== */
+
+/* ==========================================================================
+   [Parte 1] El Escenario General
+   ========================================================================== */
+
+/* Regla 01: Fondo clínico absoluto y transición elástica */
+#pantalla-blanca {
+    height: 100vh;
+    width: 100vw;
+    background-color: #ffffff; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    transition: background-color 0.5s ease;
+}
+
+/* Regla 02: Transformación de fondo para el Módulo de carga remota */
+#pantalla-blanca.modo-terminal {
+    background-color: #050505;
+}
+
+/* Regla 03: Contenedor maestro del isotipo pixel art */
+.contenedor-katt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* MODIFICADO: De 24px a 12px para acercar orgánicamente el título al gato */
+    position: relative;
+}
+
+/* Regla 04: Caja del vector SVG responsivo y disparador de click */
+.gato-svg {
+    width: 100px; 
+    height: 100px;
+    shape-rendering: crispEdges; 
+    cursor: pointer;
+}
+
+/* Regla 05: Branding tipográfico principal del sistema */
+.titulo-sistema {
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 5px; 
+    margin: 0;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+/* Regla 06: Mutación cromática del branding tras el rechazo (Gris Ceniza) */
+.titulo-sistema.modo-terminal {
+    color: #444444 !important;
+}
+
+/* ==========================================================================
+   [Parte 2] Dinámicas Cromáticas y Animaciones Oculares
+   ========================================================================== */
+
+/* Regla 07: Color normal esmeralda y llamada a la física de parpadeo humano */
+.ojo-base {
+    fill: #00ff55;
+    filter: drop-shadow(0 0 2px #00ff55);
+    animation: parpadeo-humano 5s infinite ease-in-out;
+    will-change: filter, fill; /* Aceleración de GPU */
+    transform: translateZ(0); /* Previene cortes visuales */
+}
+
+/* Regla 08: Cambio radical a rojo hostil con brillo propio emisor */
+.ojo-base.furia-roja {
+    fill: #FF3333 !important;
+    filter: drop-shadow(0 0 4px #FF3333) !important; /* Emisión de luz calibrada */
+    animation: none !important;
+}
+
+/* Regla 09: Pupila reactiva vinculada a los fotogramas del párpado */
+.iris {
+    animation: parpadeo-iris-humano 5s infinite ease-in-out;
+}
+
+/* Regla 10: Pupila fija al 100% de visibilidad en estado de vigilancia */
+.iris.furia-roja {
+    animation: none !important;
+    opacity: 1 !important;
+}
+
+/* [Líneas de Tiempo] Fotogramas clave de comportamiento orgánico */
+@keyframes parpadeo-humano {
+    0%, 86%, 95%, 100% { fill: #00ff55; filter: drop-shadow(0 0 2px #00ff55); }
+    89% { fill: #004411; filter: drop-shadow(0 0 0px transparent); }
+    90%, 91% { fill: #000000; filter: none; }
+    93% { fill: #00aa33; filter: drop-shadow(0 0 1px #00ff55); }
+}
+
+@keyframes parpadeo-iris-humano {
+    0%, 86%, 95%, 100% { opacity: 1; }
+    89% { opacity: 0.3; }
+    90%, 91% { opacity: 0; }
+    93% { opacity: 0.6; }
+}
+
+/* ==========================================================================
+   [Parte 3] Interfaces del Cuadro de Diálogo y Menús de Respuesta
+   ========================================================================== */
+
+/* Regla 11: Caja superior estilo bocadillo de viñeta centrado y adaptivo */
+.dialogo-terminal {
+    background: #000000;
+    border: 2px solid #222222;
+    padding: 14px;
+    width: 85%;
+    max-width: 345px; 
+    text-align: left;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 100;
+    box-sizing: border-box;
+    height: auto; 
+
+    /* 📍 CORRECCIÓN PRECISIÓN: Subimos la caja de 108px a 128px para liberar las orejas por completo */
+    position: absolute;
+    bottom: 128px; 
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+/* ==========================================================================
+   MODIFICACIÓN QUIRÚRGICA: Contorno y Relleno de la Flecha de Viñeta
+   ========================================================================== */
+
+/* 1. Generamos la silueta exterior gris para dar continuidad al borde de la caja */
+.dialogo-terminal::before {
+    content: "";
+    position: absolute;
+    bottom: -12px; /* Se desplaza 2px extra hacia abajo para absorber el espesor del borde */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 12px 12px 0; /* Triángulo un poco más grande */
+    border-style: solid;
+    border-color: #222222 transparent; /* Color exacto de tu borde gris */
+    display: block;
+    width: 0;
+    z-index: 99; /* Se posiciona inmediatamente detrás del fondo negro */
+}
+
+/* 2. Modificación de tu regla original para actuar como el tapón de relleno negro */
+.dialogo-terminal::after {
+    content: "";
+    position: absolute;
+    bottom: -9px; /* Ajuste milimétrico para calzar dentro de la silueta gris */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0; 
+    border-style: solid;
+    border-color: #000000 transparent; 
+    display: block;
+    width: 0;
+    z-index: 100; /* Superposición frontal limpia */
+}
+
+/* Regla 12: Bloque tipográfico interno del diálogo y control hostil */
+.dialogo-terminal p {
+    margin: 0 0 12px 0;
+    font-size: 14px; 
+    line-height: 1.2;
+    letter-spacing: -0.6px; 
+    color: #ffffff !important; 
+    font-weight: bold; 
+    font-family: 'Bahnschrift', 'Arial Narrow', sans-serif;
+    font-stretch: condensed; /* MODIFICADO: Fuerza a la tipografía a comprimirse horizontalmente estilo Word */
+}
+.dialogo-terminal p.texto-hostil {
+    color: #FF3333 !important;
+}
+
+/* Regla 13: Contenedor flexible vertical para los botones de decisión */
+.bloque-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Regla 14: Estilo interactivo minimalista de los botones de opciones */
+.btn-nodo {
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    padding: 6px 10px;
+    /* MODIFICADO: Consistencia estética con el bloque superior */
+    font-family: 'Bahnschrift', 'Agency FB', 'Arial Narrow', sans-serif;
+    font-size: 13px; /* Un pelo más grande para una lectura cómoda */
+    letter-spacing: -0.4px; /* Letras juntas y estilizadas */
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    width: 100%;
+}
+.btn-nodo:hover {
+    background: #000000;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+/* ==========================================================================
+   [Parte 4] El Núcleo de la Terminal Matrix Operativa
+   ========================================================================== */
+
+/* Regla 15: Estructura del visor log de la consola del sistema */
+.consola-terminal {
+    width: 90%;
+    max-width: 800px;
+    height: 70vh;
+    background-color: #050505;
+    border: 1px solid #113311;
+    box-shadow: 0 0 15px rgba(0,255,85,0.1);
+    padding: 20px;
+    overflow-y: auto;
+    color: #00ff55;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Regla 16: Formateo de flujo de cadenas de comandos */
+.linea-comando {
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* Regla 17: Colores semánticos para el volcado de datos de red */
+.linea-exito { color: #00ff55; }
+.linea-alerta { color: #ffcc00; }
+.linea-critica { color: #ff0033; font-weight: bold; }
+/* Regla 18: Modo Hostil Ambiental con pulsación de alerta roja */
+#pantalla-blanca.modo-hostil-rojo {
+    background-color: #120202 !important; /* Rojo ultra oscuro de base */
+    animation: pulsacion-alarma-cyber 4s infinite ease-in-out;
+}
+
+/* Regla 18: Modo Hostil Ambiental en silencio digital absoluto */
+#pantalla-blanca.modo-hostil-rope {
+    background-color: #000000 !important; /* Fusión perfecta con el cuerpo del gato */
+    animation: none !important; /* Adiós a las pulsaciones que revelaban parches */
+}
+/* Regla 19: Glifo de advertencia con Glitch y Difuminado Suave al final */
+.simbolo-peligro {
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    color: #FF3333;
+    font-weight: bold;
+    position: relative;
+    /* CAMBIO: Se reduce el tiempo a 1.5s para agilizar la transición */
+    animation: glitch-estallido 0.3s infinite steps(2), estallido-escala 1.5s forwards ease-in-out;
+}
+
+@keyframes glitch-estallido {
+    0% { text-shadow: 2px -1px 0 #00ffff, -2px 1px 0 #ff00ff; transform: translate(0px, 0px) skew(0deg); }
+    20% { text-shadow: -3px 2px 0 #00ffff, 2px -2px 0 #ff00ff; transform: translate(-2px, 1px) skew(-4deg); }
+    40% { text-shadow: 3px -2px 0 #ff0000, -1px 2px 0 #00ffff; transform: translate(2px, -1px) skew(4deg); }
+    60% { text-shadow: -1px -1px 0 #00ffff, 2px 1px 0 #ff00ff; transform: translate(-1px, -1px) skew(0deg); }
+    80% { text-shadow: 2px 3px 0 #ff0000, -3px -1px 0 #ff00ff; transform: translate(1px, 2px) skew(2deg); }
+    100% { text-shadow: -2px 1px 0 #00ffff, 1px -2px 0 #ff00ff; transform: translate(0px, 0px) skew(0deg); }
+}
+
+/* Transición optimizada acelerada a 1.5s en total */
+@keyframes estallido-escala {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        transform: scale(1.4);
+        opacity: 1;
+    }
+    80% {
+        transform: scale(1.1);
+        opacity: 1; /* Se mantiene estable y rompiéndose con tensión */
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0; /* Se difumina de manera suave y limpia hacia el negro */
+    }
+}
+.ola-puntos {
+    display: inline-flex;
+    gap: 2px;
+    margin-left: 4px;
+}
+.ola-puntos span {
+    font-size: 11px;
+    font-weight: bold;
+    color: #00ff55; /* Verde esmeralda de escaneo intacto */
+    animation: ola-pensamiento 1.2s ease-in-out infinite; /* Ciclo lento intacto */
+}
+.ola-puntos span:nth-child(1) { animation-delay: 0s; }
+.ola-puntos span:nth-child(2) { animation-delay: 0.3s; }
+.ola-puntos span:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes ola-pensamiento {
+    0%, 100% { transform: translateY(0); opacity: 0.3; }
+    50% { transform: translateY(-4px); opacity: 1; }
+}
+/* ============================================= */
+/* regla 20: BOTONES DEL DIÁLOGO 3D - NEÓN MALOGRADO      */
+/* ============================================= */
+/* [REGLA MAESTRA] Botón HUD (Consolidado) */
+.btn-opcion-hud {
+    background: rgba(4, 12, 6, 0.75) !important;
+    color: #00ff55 !important;
+    border: 1px solid #00bb3e !important;
+    padding: 10px 12px !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-family: 'Courier New', 'Consolas', 'Monospace', monospace !important;
+    font-size: 13.5px !important;
+    font-weight: bold !important;
+    letter-spacing: -1px !important; /* Compactación aquí */
+    line-height: 1.2 !important;
+    text-shadow: 0 0 4px rgba(0, 255, 85, 0.4);
+    box-shadow: 0 0 6px rgba(0, 255, 85, 0.08);
+    animation: glitch-corrupcion 6s infinite;
+    transition: all 0.1s ease;
+    will-change: background, box-shadow, text-shadow, color;
+    transform: translateZ(0);
+}
+
+.btn-opcion-hud:hover {
+    animation: none;
+    background: rgba(0, 40, 10, 0.9) !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 0 15px #00ff55 !important;
+}
+
+/* ========================================================================== */
+/* [Regla 21] CANDADO PIXEL-ART (INAMOVIBLE)                                 */
+/* ========================================================================== */
+.contenedor-candado-denegado {
+    position: absolute; /* Esto evita que el gato se mueva */
+    top: -90px;         /* Ajustado milimétricamente sobre la cabeza */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Fuerza a los elementos internos a alinearse al centro */
+    gap: 6px;
+    width: 250px;       /* Caja contenedora con ancho fijo para clavar el eje central */
+    pointer-events: none;
+    animation: pulso-sutil 2s infinite;
+}
+
+/* Selector dual para asegurar el centrado ya sea el emoji o el formato SVG */
+.icono-candado, .icono-candado-pixel {
+    font-size: 22px;
+    line-height: 1;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.texto-denegado-branding {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 13.5px;
+    letter-spacing: 5px;
+    text-indent: 5px;   /* SOLUCIÓN CRÍTICA: Añade sangría al inicio para compensar el espacio de la última letra */
+    text-transform: uppercase;
+    color: #444444; 
+    line-height: 1.3;
+    width: 100%;
+    text-align: center;
+}
+
+@keyframes pulso-sutil {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+}
+/* [Regla 22] BLOQUEO DE CLIC EN MODO HOSTIL */
+/* Esto desactiva cualquier interacción cuando el gato tiene ojos rojos */
+.modo-hostil-rojo .contenedor-katt {
+    pointer-events: none;
+}
+/* [Regla 23] DISEÑO CARTA METÁLICA */
+.viñeta-holografica {
+    background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%) !important;
+    border: 1px solid #333 !important;
+    /* Efecto de borde tipo metal cepillado/holograma sutil */
+    border-image: linear-gradient(45deg, #222, #444, #222) 1 !important;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5), 0 0 5px rgba(255, 255, 255, 0.05) !important;
+    transition: all 0.3s ease !important;
+}
+/* ============================================= */
+/* [Regla 24] COMPACTACIÓN DE TEXTO EN VIÑETA    */
+/* ============================================= */
+#texto-consola {
+    letter-spacing: -3px !important;
+    word-spacing: -2px !important;
+}
+/* ========================================================================== */
+/* [Regla FINAL] ESTILO MAESTRO DE BOTONES HUD (VERSION LIMPIA)               */
+/* ========================================================================== */
+.btn-opcion-hud {
+    background: rgba(4, 12, 6, 0.75) !important; 
+    color: #00ff55 !important;
+    border: 1px solid #00bb3e !important;
+    padding: 10px 12px !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 13.5px !important;
+    font-weight: bold !important;
+    letter-spacing: -1px !important; 
+    line-height: 1.2 !important;
+    text-shadow: 0 0 4px rgba(0, 255, 85, 0.4) !important;
+    box-shadow: 0 0 6px rgba(0, 255, 85, 0.08) !important;
+    animation: glitch-corrupcion 6s infinite;
+    transition: all 0.1s ease;
+}
+
+/* PANTALLA VERDE DEFINITIVA AL PASAR EL MOUSE (Instante, sólido y brillante) */
+.btn-opcion-hud:hover { 
+    background: #00ff55 !important; 
+    color: #000000 !important; 
+    border-color: #ffffff !important; 
+    text-shadow: none !important;
+    box-shadow: 0 0 20px rgba(0, 255, 85, 0.8), inset 0 0 8px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ========================================================================== */
+/* FORZAR COMPACTACIÓN DE TEXTO EN CONSOLA NARRADOR                           */
+/* ========================================================================== */
+#texto-consola {
+    letter-spacing: -3px !important;
+    word-spacing: -2px !important;
+}
