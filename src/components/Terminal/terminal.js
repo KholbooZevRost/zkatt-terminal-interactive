@@ -1,4 +1,4 @@
-import './terminal.css';
+
 import { iniciarComponenteEscritorio } from '../Escritorio/escritorio.js';
 
 export function iniciarComponenteTerminal(contenedorMaestro) {

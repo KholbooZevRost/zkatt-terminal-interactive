@@ -1,4 +1,4 @@
-import './escritorio.css';
+
 
 export function iniciarComponenteEscritorio(contenedorMaestro) {
     // Montamos la interfaz de escritorio clásico estilo Windows 95 / OS Alienígena
