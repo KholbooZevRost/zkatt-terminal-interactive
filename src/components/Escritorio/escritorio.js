@@ -1,7 +1,6 @@
-
+import './escritorio.css';
 
 export function iniciarComponenteEscritorio(contenedorMaestro) {
-    // Montamos la interfaz de escritorio clásico estilo Windows 95 / OS Alienígena
     contenedorMaestro.innerHTML = `
         <div id="pantalla-escritorio-retro">
             <div class="crt-scanlines-escritorio"></div>
@@ -30,27 +29,27 @@ export function iniciarComponenteEscritorio(contenedorMaestro) {
     const cerrarBtn = contenedorMaestro.querySelector('#cerrar-ventana-retro');
     const textoAutor = contenedorMaestro.querySelector('#texto-autor-retro');
 
-    // Mensaje de lore cifrado/descifrado que unifica ambos mundos
     const mensajeGaia = `[ CONNECTIVITY PROTOCOL ESTABLISHED ]\n⏣ ⎈ ⍎ ⍕ ⍙ ⍚ ⍛ ⍜\n------------------------------------\nORIGEN: PLANETA GAIA // CORE MATE\nDESTINO: PLANETA TIERRA // TERMINAL ZRC\n\n> DESCIFRANDO ENLACE DE DATOS...\n> TRADUCCIÓN COMPLETADA CON ÉXITO:\n\n"Los canales de biomasa cuántica se han estabilizado. El puente entre dimensiones se mantiene firme. No estamos aislados en la red."\n\n> zrc_root: puente_activo // frecuencia_estable.`;
 
-    // Abrir ventana al hacer click sobre el archivo de texto
-    archivoGaia.addEventListener('click', () => {
-        if (ventanaMensaje.style.display !== 'block') {
-            ventanaMensaje.style.display = 'block';
-            textoAutor.innerHTML = ''; 
-            escribirEfectoMaquina(0);
-        }
-    });
+    if (archivoGaia) {
+        archivoGaia.addEventListener('click', () => {
+            if (ventanaMensaje && ventanaMensaje.style.display !== 'block') {
+                ventanaMensaje.style.display = 'block';
+                if (textoAutor) textoAutor.innerHTML = ''; 
+                escribirEfectoMaquina(0);
+            }
+        });
+    }
 
-    // Cerrar la ventana del sistema operativo
-    cerrarBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Evita que el click interactúe con el fondo del escritorio
-        ventanaMensaje.style.display = 'none';
-    });
+    if (cerrarBtn) {
+        cerrarBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (ventanaMensaje) ventanaMensaje.style.display = 'none';
+        });
+    }
 
-    // Tu función nativa antigua de máquina de escribir adaptada de forma modular
     function escribirEfectoMaquina(indice) {
-        if (indice < mensajeGaia.length) {
+        if (textoAutor && indice < mensajeGaia.length) {
             let caracter = mensajeGaia.charAt(indice);
             textoAutor.innerHTML += (caracter === '\n') ? '<br>' : caracter;
             setTimeout(() => escribirEfectoMaquina(indice + 1), 30);

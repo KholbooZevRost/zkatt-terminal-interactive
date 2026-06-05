@@ -1,4 +1,4 @@
-
+import './terminal.css'; // <- ESTA ES LA LÍNEA QUE FALTABA PARA DARLE EL ESTILO RETRO COMA A COMPUTADORA
 import { iniciarComponenteEscritorio } from '../Escritorio/escritorio.js';
 
 export function iniciarComponenteTerminal(contenedorMaestro) {
@@ -39,10 +39,10 @@ export function iniciarComponenteTerminal(contenedorMaestro) {
         progreso += Math.floor(Math.random() * 3) + 2;
         if (progreso > 100) progreso = 100;
 
-        porcentajeNum.innerText = progreso;
-        progressFill.style.width = progreso + "%";
+        if (porcentajeNum) porcentajeNum.innerText = progreso;
+        if (progressFill) progressFill.style.width = progreso + "%";
 
-        // Activamos el Kernel Panic exactamente cuando pasa el 40% como en tu foto
+        // Activamos el Kernel Panic exactamente cuando pasa el 40%
         if (progreso >= 40 && logPanic) {
             logPanic.style.display = 'block';
         }
